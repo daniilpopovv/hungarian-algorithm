@@ -133,7 +133,7 @@ def perform_calculation():
         [f"{table.index[row]} - {table.columns[col]}" for row, col in zip(unique_index['row'], unique_index['col'])])
 
     optimal_value = sum(table.iloc[row, col] for row, col in zip(unique_index['row'], unique_index['col']))
-    result_text += f"\nОптимальное значение - {optimal_value}"
+    result_text += f"\n\nОптимальное значение - {optimal_value}"
 
     result.set(result_text)
 
@@ -143,7 +143,7 @@ def perform_calculation():
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.title("Hungarian Algorithm")
+    root.title("Венгерский алгоритм")
 
     mainframe = ttk.Frame(root, padding="10")
     mainframe.grid(column=0, row=0, sticky='WENS')
@@ -152,12 +152,12 @@ if __name__ == '__main__':
     optimization = tk.BooleanVar()
     trace = tk.BooleanVar()
 
-    ttk.Label(mainframe, text="Выберите CSV файл:").grid(column=1, row=1, sticky='WE')
+    ttk.Label(mainframe, text="Выберите CSV файл: ").grid(column=1, row=1, sticky='WE')
     ttk.Entry(mainframe, textvariable=file_path, width=30).grid(column=2, row=1, sticky='WE')
     ttk.Button(mainframe, text="Обзор", command=browse_file).grid(column=3, row=1, sticky='WE')
     ttk.Checkbutton(mainframe, text="Максимизация", variable=optimization).grid(column=2, row=2, sticky='WE')
     ttk.Checkbutton(mainframe, text="Трассировка", variable=trace).grid(column=2, row=3, sticky='WE')
-    ttk.Button(mainframe, text="Выполнить", command=perform_calculation).grid(column=2, row=4, sticky='WE')
+    ttk.Button(mainframe, text="Рассчитать", command=perform_calculation).grid(column=2, row=4, sticky='WE')
 
     result = tk.StringVar()
     ttk.Label(mainframe, text="Результат:").grid(column=1, row=4, sticky='WE')
